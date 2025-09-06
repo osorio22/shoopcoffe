@@ -1,6 +1,3 @@
-@startuml casoscoffeshop
-@enduml
-
 @startuml casossuerteinventario
 left to right direction
 actor "Cliente" as est
