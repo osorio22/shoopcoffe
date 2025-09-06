@@ -1,2 +1,20 @@
 @startuml casoscoffeshop
 @enduml
+
+@startuml casossuerteinventario
+left to right direction
+actor "Cliente" as est
+actor "Administrador" as admin
+
+rectangle "Sistema de Inventario" {
+  usecase "Ver productos" as UC1
+  usecase "Agregar producto" as UC2
+  usecase "Eliminar producto" as UC3
+  usecase "Actualizar inventario" as UC4
+}
+est --> UC1
+admin --> UC2
+admin --> UC3
+admin --> UC4
+
+@enduml
