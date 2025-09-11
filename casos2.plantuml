@@ -2,6 +2,7 @@
 left to right direction
 actor "Usuario" as usu     
 actor "Administrador  cigarrillos" as admin
+actor "Proveedor" as prov
 
 rectangle "Sistema de Inventario de Cigarrillos" {
     usecase " ingresar cigarrillos" as UC1
@@ -11,16 +12,27 @@ rectangle "Sistema de Inventario de Cigarrillos" {
     usecase "Ver Estado Inventario" as UC5
     usecase "Configurar Puntos de Reorden" as UC6
     usecase "Recibir Alertas de Stock" as UC7
+    usecase "Actualizar Inventario" as UC8
+    usecase "Gestionar Usuarios" as UC9
+
     }
 
 usu --> UC1
 usu --> UC2
 usu --> UC5
+usu --> UC8
+
+
 admin --> UC1
 admin --> UC3
 admin --> UC4
 admin --> UC5
 admin --> UC6
-admin --> UC7
+admin -->UC7
 admin --> UC2
+admin --> UC8
+
+prov <-- UC4
+prov <-- UC9
+prov <-- UC5
 @enduml
