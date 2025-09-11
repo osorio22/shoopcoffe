@@ -1,4 +1,4 @@
-@@startuml clasescoffeshop
+@startuml clasescoffeshop
 
 class Usuario {
     -id: int
@@ -8,9 +8,53 @@ class Usuario {
 }
 
 class Estudiantes {
-+realizarPedido (menu: menu, items: list<item>,metodopago: string):pedido
++ realizarPedido (menu: Menu, items: List<Item>, metodoPago: String): pedido
 }
 
-class AdministradorCafeteria{}
+class AdministradorCafeteria{
+    + gestionarMenu():void
+    + articularizarTiempoEntrega(pedido:pedido,tiempo: int):void
+}
+
+class Menu{
+    - id:int
+    - fecha: Data
+    - items: List<Item>
+    + mostrar(): void
+}
+
+class Item {
+    - id: int
+    - nombre: String
+    - precio: double
+    - cantidad: int
+    + getPrecio(): double
+}
+
+class Pedido {
+    - id: int
+    - fechaHora: Date
+    - estado: string
+    - tiempoEstimado: int
+    + confirmar(): void
+    + entregar(): void
+    + cancelar(): void
+}
+
+class Notificacion {
+    - id: int
+    - mensaje: string
+    - fechaEnvio: Date
+    + enviar(usuario: Usuario): void
+}
+
+Usuario <|-- Estudiantes
+usuario <|-- AdministradorCafeteria
+Menu "1"--> "*" Item
+Estudiantes "1" --> "*"pedido
+pedido "1" --> "*"Item
+pedido --> Notificacion
+
+
 
 @enduml
